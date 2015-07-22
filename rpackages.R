@@ -1,12 +1,12 @@
 # Run this file to install all required packages (that aren't already installed.)
 
 # CRAN packages
-cran_pkgs <- c( "devtools", "MCMCglmm", "lme4", "foreach", "doMC", "ggplot2",
-  "ggthemes", "knitr", "pander", "grid", "effects", "arm", "dplyr", "tidyr",
-  "readr", "rmarkdown", "data.table")
+cran_pkgs <- c("devtools", "MCMCglmm", "lme4", "foreach", "doMC", "ggplot2",
+  "ggvis", "ggthemes", "knitr", "pander", "grid", "effects", "arm", "dplyr",
+  "tidyr", "readr", "rmarkdown", "data.table")
 
 # Github packages (package name = github repository)
-github_pkgs <- list()
+github_pkgs <- list(colorout = "jalvesaq/colorout")
 
 # Packages on non-cran repositories
 non_cran_pkgs <- list(printr = c('http://yihui.name/xran', 'http://cran.rstudio.com'))

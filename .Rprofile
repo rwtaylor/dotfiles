@@ -1,7 +1,6 @@
 
-if (interactive()) {
-  if (!suppressMessages(require(colorout)))
-    warning("colorout cannot be loaded...")
+if (interactive() & is.element("colorout", utils::installed.packages()[,1])) {
+  require(colorout)
 }
 
 options(
