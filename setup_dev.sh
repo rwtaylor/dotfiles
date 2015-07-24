@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# For centos 7
+# VPSDime
+# Follow this: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7
+# Create user centos for consistency w/ amazon AMI
+
+# For all CentOS 7 (Start here with Amazon AMI Cent OS 7)
 
 sudo yum update -y
 
@@ -17,7 +21,7 @@ git config --global credential.helper 'cache --timeout=604800'
 
 # Get dotfiles
 git clone https://github.com/rwtaylor/dotfiles.git
-cp dofiles/.bash_profile $HOME?
+cp dotfiles/.bash_profile $HOME/
 cp dotfiles/.Rprofile $HOME/
 
 # Install r packages
@@ -53,3 +57,14 @@ sudo pip install mkdocs
 
 # Web server
 sudo yum install -y nginx
+
+
+
+
+# Setup nginx
+
+# Backup config file
+cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+
+# Copy over projects configuration
+sudo cp nginx/projects.conf /etc/nginx/conf.d
