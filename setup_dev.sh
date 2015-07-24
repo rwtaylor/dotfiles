@@ -10,7 +10,7 @@ sudo yum update -y
 
 sudo yum install -y epel-release
 sudo yum install -y git R pandoc libcur-devel libxml2-devel openssl-devel \
-  curl-devel wget htop httpd-tools
+  curl-devel wget htop httpd-tools automake
 
 # Setup git
 git config --global user.name "Ryan W. Taylor"
@@ -18,6 +18,7 @@ git config --global user.email "ryan@ryantaylor.net"
 git config --global credential.helper cache
 # Remember password for 1 week
 git config --global credential.helper 'cache --timeout=604800'
+git config --global color.ui true
 
 # Get dotfiles
 git clone https://github.com/rwtaylor/dotfiles.git
@@ -63,15 +64,35 @@ sudo yum install -y nginx
 
 # Setup nginx
 
-# Backup config file
-cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+# Backup and replace config file
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+sudo cp dotfiles/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Copy over projects configuration
-sudo cp nginx/projects.conf /etc/nginx/conf.d
+sudo cp dotfiles/nginx/projects.conf /etc/nginx/conf.d
+
+
+
+sudo systemctl start nginx
 
 # Symlinking directories
 # Clone main site
 # git clone https://github.com/rwtaylor/projects.ryantaylor.net.git
-# sudo ln -s /home/centos/projects.ryantaylor.net /usr/share/nginx/projects.ryantaylor.net
+# sudo ln -s /home/centos/projects.ryantaylor.net /usr/share/nginx/html/projects.ryantaylor.net
 # For each project site folder
-# sudo ln -s  /home/centos/projects/2014-male-selection/site /usr/share/nginx/html/2014-male-selection
+
+# cd ~/projects
+# git clone https://github.com/rwtaylor/2014-male-selection.git
+# ln -s  /home/centos/projects/2014-male-selection/site /home/centos/projects.ryantaylor.net/2014-male-selection
+
+# git clone https://github.com/rwtaylor/2015-krsp-gbs-test-run.git
+# ln -s  /home/centos/projects/2015-krsp-gbs-test-run/site /home/centos/projects.ryantaylor.net/2015-krsp-gbs-test-run
+
+#
+# ln -s  /home/centos/projects/2015-chipmunk/site /home/centos/projects.ryantaylor.net/2015-chipmunk
+
+# Permissions
+# Give nginx access to /home/centos and other directories
+# chmod a+x /home/centos
+# chmod a+x projects.ryantaylor.net
+# chmod a+x projects
