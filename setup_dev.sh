@@ -68,3 +68,10 @@ cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 
 # Copy over projects configuration
 sudo cp nginx/projects.conf /etc/nginx/conf.d
+
+# Symlinking directories
+# Clone main site
+# git clone https://github.com/rwtaylor/projects.ryantaylor.net.git
+# sudo ln -s /home/centos/projects.ryantaylor.net /usr/share/nginx/projects.ryantaylor.net
+# For each project site folder
+# sudo ln -s  /home/centos/projects/2014-male-selection/site /usr/share/nginx/html/2014-male-selection
