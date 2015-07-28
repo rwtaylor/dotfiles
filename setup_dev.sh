@@ -10,7 +10,7 @@ sudo yum update -y
 
 sudo yum install -y epel-release
 sudo yum install -y git R pandoc libcur-devel libxml2-devel openssl-devel \
-  curl-devel wget htop httpd-tools automake
+  curl-devel wget htop httpd-tools automake firewalld
 
 # Setup git
 git config --global user.name "Ryan W. Taylor"
@@ -96,3 +96,22 @@ sudo systemctl start nginx
 # chmod a+x /home/centos
 # chmod a+x projects.ryantaylor.net
 # chmod a+x projects
+
+
+# Firewalld
+sudo systemctl start firewalld
+# ssh and http
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --permanent --add-service=http
+
+# For nuclide
+sudo firewall-cmd --permanent --add-port=9090-9093/tcp
+sudo firewall-cmd --reload
+sudo systemctl enable firewalld
+
+# NTP / Timezone
+sudo timedatectl set-timezone America/Los_Angeles
+
+sudo yum install ntp
+sudo systemctl start ntpd
+sudo systemctl enable ntpd

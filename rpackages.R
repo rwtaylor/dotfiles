@@ -3,7 +3,7 @@
 # CRAN packages
 cran_pkgs <- c("devtools", "MCMCglmm", "lme4", "foreach", "doMC", "ggplot2",
   "ggvis", "ggthemes", "knitr", "pander", "grid", "effects", "arm", "dplyr",
-  "tidyr", "readr", "rmarkdown", "data.table", "psych", "mvnormtest")
+  "tidyr", "readr", "rmarkdown", "data.table", "psych", "mvnormtest", "RSQLite")
 
 # Github packages (package name = github repository)
 github_pkgs <- list(colorout = "jalvesaq/colorout")
