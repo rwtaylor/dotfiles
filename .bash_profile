@@ -10,4 +10,5 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH
 
 alias R='R --no-save'
-alias ls="ls -G"
+
+python -mplatform | grep Darwin && alias ls="ls -G" || alias ls="ls --color"
