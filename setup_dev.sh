@@ -25,9 +25,6 @@ sudo systemctl restart sshd
 
 sudo yum update -y
 
-# If CentOS 6.X follow this guide to update to CentOS 7
-# https://wiki.centos.org/TipsAndTricks/CentOSUpgradeTool
-
 sudo yum install -y epel-release
 sudo yum install -y git htop
 
@@ -44,8 +41,8 @@ git config --global color.ui true
 
 # Get dotfiles
 git clone https://github.com/rwtaylor/dotfiles.git
-cp dotfiles/.bash_profile $HOME/
-cp dotfiles/.Rprofile $HOME/
+ln -s dotfiles/.bash_profile $HOME/.bash_profile
+#cp dotfiles/.Rprofile $HOME/
 
 # Install r packages
 # Open R and install a packages to create personal library...
@@ -73,6 +70,14 @@ sudo cp dotfiles/nginx/nginx.conf /etc/nginx/nginx.conf
 # Copy over projects configuration
 sudo cp dotfiles/nginx/projects.conf /etc/nginx/conf.d
 
+# Copy over htpasswd
+sudo mkdir -p /etc/nginx/httpassword
+# From MBP or wherever
+#
+scp ~/Sites/httpasswd/projects.ryantaylor.net ryan@45.55.4.32:~/prwt_httpasswd
+
+# Back to server
+sudo mv ~/prwt_httpasswd /etc/nginx/httpasswd/projects.ryantaylor.net
 
 sudo systemctl start nginx
 
@@ -95,9 +100,9 @@ ln -s  ~/projects/2015-krsp-gbs-test-run/site ~/projects.ryantaylor.net/2015-krs
 
 # Permissions
 # Give nginx access to /home/ryan and other directories
-# chmod a+x /home/ryan
-# chmod a+x projects.ryantaylor.net
-# chmod a+x projects
+chmod a+x /home/ryan
+chmod a+x projects.ryantaylor.net
+chmod a+x projects
 
 
 # Firewalld
