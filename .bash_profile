@@ -10,3 +10,4 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH
 
 alias R='R --no-save'
+alias ls="ls -G"

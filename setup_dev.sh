@@ -8,9 +8,12 @@
 
 sudo yum update -y
 
+# If CentOS 6.X follow this guide to update to CentOS 7
+# https://wiki.centos.org/TipsAndTricks/CentOSUpgradeTool
+
 sudo yum install -y epel-release
 sudo yum install -y git R pandoc libcur-devel libxml2-devel openssl-devel \
-  curl-devel wget htop httpd-tools automake firewalld
+  curl-devel wget htop httpd-tools automake firewalld mosh
 
 # Setup git
 git config --global user.name "Ryan W. Taylor"
@@ -28,25 +31,6 @@ cp dotfiles/.Rprofile $HOME/
 # Install r packages
 Rscript -e "source('dotfiles/rpackages.R')"
 
-
-# npm
-sudo yum install -y npm
-# Upgradd node
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-
-# Nuclide
-sudo npm install -g nuclide-server
-
-# Watchman (for nuclide)
-git clone https://github.com/facebook/watchman.git
-cd watchman
-./autogen.sh
-./configure
-make
-sudo make install
-
 # Install pip
 wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
@@ -58,8 +42,6 @@ sudo pip install mkdocs
 
 # Web server
 sudo yum install -y nginx
-
-
 
 
 # Setup nginx
@@ -104,8 +86,10 @@ sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-service=ssh
 sudo firewall-cmd --permanent --add-service=http
 
-# For nuclide
-sudo firewall-cmd --permanent --add-port=9090-9093/tcp
+# For mosh
+sudo firewall-cmd --permanent --remove-port=9090-9093/tcp
+
+sudo firewall-cmd --permanent --add-port=60000-61000/udp
 sudo firewall-cmd --reload
 sudo systemctl enable firewalld
 

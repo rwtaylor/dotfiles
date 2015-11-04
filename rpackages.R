@@ -6,7 +6,7 @@ cran_pkgs <- c("devtools", "MCMCglmm", "lme4", "foreach", "doMC", "ggplot2",
   "tidyr", "readr", "rmarkdown", "data.table", "psych", "mvnormtest", "RSQLite")
 
 # Github packages (package name = github repository)
-github_pkgs <- list(colorout = "jalvesaq/colorout")
+github_pkgs <- list(colorout = "jalvesaq/colorout", ezsummary = "haozhu233/ezsummary")
 
 # Packages on non-cran repositories
 non_cran_pkgs <- list(printr = c('http://yihui.name/xran', 'http://cran.rstudio.com'))
