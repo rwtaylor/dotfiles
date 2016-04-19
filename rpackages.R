@@ -1,9 +1,17 @@
 # Run this file to install all required packages (that aren't already installed.)
 
+# #Bioconductor
+# source("https://bioconductor.org/biocLite.R")
+#
+# library(biocLite)
+# biocLite("Biostrings")
+# biocLite("ShortRead")
+# biocLite("zlibbioc")
+
 # CRAN packages
 cran_pkgs <- c("devtools", "MCMCglmm", "lme4", "foreach", "doMC", "ggplot2",
   "ggvis", "ggthemes", "knitr", "pander", "grid", "effects", "arm", "dplyr",
-  "tidyr", "readr", "rmarkdown", "data.table", "psych", "mvnormtest", "RSQLite")
+  "tidyr", "readr", "lubridate", "rmarkdown", "data.table", "psych", "mvnormtest", "RSQLite")
 
 # Github packages (package name = github repository)
 github_pkgs <- list(colorout = "jalvesaq/colorout", ezsummary = "haozhu233/ezsummary")
