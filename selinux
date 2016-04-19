@@ -1,8 +1,0 @@
-
-# allow web server access to files / folders
-# -a adds a new record, -t sets the type, -R is recursive
-sudo semanage fcontext -a -t httpd_sys_content_t /home
-sudo semanage fcontext -a -t httpd_sys_content_t /centos
-sudo semanage fcontext -a -t httpd_sys_content_t /home/centos/projects.ryantaylor.net
-sudo semanage fcontext -a -t httpd_sys_content_t "/home/centos/projects.ryantaylor.net(/.*)?"
-sudo semanage fcontext -a -t httpd_sys_content_t "/home/centos/projects(/.*)?"
