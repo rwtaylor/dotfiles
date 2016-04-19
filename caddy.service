@@ -1,0 +1,16 @@
+[Unit]
+Description=The Caddy HTTP and HTTPS web server
+Documentation=https://caddyserver.com/docs
+After=network.target
+
+[Service]
+User=www-data
+LimitNOFILE=4096
+ExecStart= -conf=/etc/caddy/Caddyfile  
+ExecStart=/home/ryan/.linuxbrew/bin/caddy -agree=true -email="service@ryantaylor.net" -conf=/srv/www/Caddyfile -pidfile=/var/run/caddy/caddy.pid -log=stderr
+PIDFile=/var/run/caddy/caddy.pid
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
